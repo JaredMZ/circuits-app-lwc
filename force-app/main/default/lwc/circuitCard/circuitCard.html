@@ -1,0 +1,48 @@
+<template>
+  <lightning-card title="Racing Circuits" icon-name="">
+    <div class="slds-card__body slds-card__body_inner">
+      <template if:true={circuits}>
+        <lightning-layout multiple-rows="true" pull-to-boundary="small">
+          <template for:each={circuits} for:item="circuit">
+            <lightning-layout-item
+              key={circuit.Id}
+              size="4"
+              class="slds-var-p-around_x-small"
+            >
+              <lightning-card
+                title={circuit.Name}
+                class="circuit-tile slds-align_absolute-center slds-box slds-p-vertical_x-large"
+              >
+                <div class="slds-var-p-horizontal_small circuit-tile-body">
+                  <div class="slds-media">
+                    <img
+                      id={circuit.Id}
+                      src={circuit.ImgUrl}
+                      alt="Circuit Shape"
+                      class="circuit-shape"
+                      style="height: 100px"
+                    />
+
+                    <!--
+										<div class="slds-media__body">
+											<p class="slds-var-m-bottom_xx-small">{circuit.Location__c}</p>
+											<p class="slds-var-m-bottom_xx-small">{circuit.Length__c} km</p>
+											<p class="slds-var-m-bottom_xx-small">{circuit.Turns__c}</p>
+											<p class="slds-var-m-bottom_xx-small">{circuit.Surface__c}</p>
+										</div> -->
+                  </div>
+                </div>
+              </lightning-card>
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+      </template>
+
+      <template if:true={error}>
+        <div class="slds-text-color_error">
+          An error occurred while loading the circuits: {error}
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>
