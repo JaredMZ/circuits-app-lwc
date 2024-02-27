@@ -4,20 +4,6 @@
     <!-- Card header -->
     <div class="slds-card__header slds-grid">
       <header class="slds-media slds-media_center slds-has-flexi-truncate">
-        <div class="slds-media__figure">
-          <!-- Icon for account -->
-          <span
-            class="slds-icon_container"
-            title="circuit"
-          >
-            <svg class="slds-icon slds-icon_small" aria-hidden="true">
-              <use
-                xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"
-              ></use>
-            </svg>
-            <span class="slds-assistive-text">Circuit</span>
-          </span>
-        </div>
         <div class="slds-media__body">
           <!-- Header title -->
           <h2 class="slds-card__header-title">
@@ -63,9 +49,7 @@
             </header>
           </div>
           <!-- Circuit image -->
-          <div
-            class="slds-card__body_inner slds-m-around_large img-container"
-          >
+          <div class="slds-card__body_inner slds-m-around_large img-container">
             <img
               src={circuit.ImgUrl}
               alt="Circuit Shape"
@@ -76,7 +60,7 @@
           <footer class="slds-card__footer">
             <lightning-button
               variant="Base"
-              label="Open Record"
+              label="View Details"
               onclick={viewRecord}
               value={circuit.Id}
             ></lightning-button>
@@ -84,12 +68,5 @@
         </lightning-layout-item>
       </template>
     </lightning-layout>
-    <!-- Card footer -->
-    <footer class="slds-card__footer">
-      <a class="slds-card__footer-action" href="#"
-        >View All
-        <span class="slds-assistive-text">Circuits</span>
-      </a>
-    </footer>
   </article>
 </template>
