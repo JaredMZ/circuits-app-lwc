@@ -1,7 +1,7 @@
 public with sharing class CircuitController {
     @AuraEnabled(cacheable=true scope='global')
     public static String getAllCircuits() {
-        //As JSON
+        //CIRCUITS QUERY
         List<Circuit__c> circuits = [SELECT
                                         Id,
                                         Name,
@@ -9,11 +9,12 @@ public with sharing class CircuitController {
                                         Length__c,
                                         Turns__c,
                                         Surface__c,
-                                        Shape__c
+                                        Shape__c,
+                                        Start_Year__c
                                     FROM Circuit__c
                                     WITH SECURITY_ENFORCED
                                     ORDER BY Name
-                                    LIMIT 6];
+                                    LIMIT 9];
     
         List<Map<String, Object>> circuitsJsonList = new List<Map<String, Object>>();
 
@@ -25,7 +26,8 @@ public with sharing class CircuitController {
                 'Length__c' => circuit.Length__c,
                 'Turns__c' => circuit.Turns__c,
                 'Surface__c' => circuit.Surface__c,
-                'Shape__c' => circuit.Shape__c
+                'Shape__c' => circuit.Shape__c,
+                'Start_Year__c' => circuit.Start_Year__c
             };
 
 
@@ -35,19 +37,17 @@ public with sharing class CircuitController {
         return JSON.serialize(circuitsJsonList);
     }
     
-
+    //RETURN QUERY GIVEN A SEARCH TERM
     @AuraEnabled(cacheable=true scope='global')
     public static String searchCircuit(String searchTerm) {
-        // Return all circuits when no search term
+
         searchTerm = searchTerm.trim();
         if (searchTerm == '') {
             return getAllCircuits();
         }
         
-        // Prepare query parameters
         searchTerm = '%' + searchTerm + '%';
         
-        // Execute search query
         List<Circuit__c> searchResults = [SELECT
                                             Id,
                                             Name,
@@ -55,7 +55,8 @@ public with sharing class CircuitController {
                                             Length__c,
                                             Turns__c,
                                             Surface__c,
-                                            Shape__c
+                                            Shape__c,
+                                            Start_Year__c
                                         FROM Circuit__c
                                         WHERE Name LIKE :searchTerm
                                         WITH SECURITY_ENFORCED
