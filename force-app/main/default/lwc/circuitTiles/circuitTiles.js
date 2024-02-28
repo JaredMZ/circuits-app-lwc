@@ -4,15 +4,12 @@ import CIRCUIT_TILES_UPDATE_MESSAGE from "@salesforce/messageChannel/CircuitTile
 import { NavigationMixin } from "lightning/navigation";
 import getAllCircuits from "@salesforce/apex/CircuitController.getAllCircuits";
 import circuitShapes from "@salesforce/resourceUrl/circuitShapes";
-import searchCircuit from "@salesforce/apex/CircuitController.searchCircuit";
 
 export default class CircuitCard extends NavigationMixin(LightningElement) {
   circuits;
-  searchTerm = "";
   error;
 
   @wire(MessageContext) messageContext;
-  @wire(searchCircuit, { searchTerm: "$searchTerm" })
   connectedCallback() {
     this.loadCircuits();
   }
@@ -51,6 +48,8 @@ export default class CircuitCard extends NavigationMixin(LightningElement) {
             Turns: selectedCircuit.Turns__c,
             Surface: selectedCircuit.Surface__c,
             StartYear: selectedCircuit.Start_Year__c,
+            Latitude: selectedCircuit.Latitude__c,
+            Longitude: selectedCircuit.Longitude__c,
             IsActive: true
         };
 

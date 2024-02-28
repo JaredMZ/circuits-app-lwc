@@ -10,7 +10,9 @@ public with sharing class CircuitController {
                                         Turns__c,
                                         Surface__c,
                                         Shape__c,
-                                        Start_Year__c
+                                        Start_Year__c,
+                                        Latitude__c,
+                                        Longitude__c
                                     FROM Circuit__c
                                     WITH SECURITY_ENFORCED
                                     ORDER BY Name
@@ -27,7 +29,9 @@ public with sharing class CircuitController {
                 'Turns__c' => circuit.Turns__c,
                 'Surface__c' => circuit.Surface__c,
                 'Shape__c' => circuit.Shape__c,
-                'Start_Year__c' => circuit.Start_Year__c
+                'Start_Year__c' => circuit.Start_Year__c,
+                'Latitude__c' => circuit.Latitude__c,
+                'Longitude__c' => circuit.Longitude__c
             };
 
 
@@ -56,7 +60,9 @@ public with sharing class CircuitController {
                                             Turns__c,
                                             Surface__c,
                                             Shape__c,
-                                            Start_Year__c
+                                            Start_Year__c,
+                                            Latitude__c,
+                                            Longitude__c
                                         FROM Circuit__c
                                         WHERE Name LIKE :searchTerm
                                         WITH SECURITY_ENFORCED

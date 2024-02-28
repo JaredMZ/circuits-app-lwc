@@ -67,6 +67,8 @@
     {
       "name": "Autodromo Nazionale Monza",
       "location": "Monza, Italy",
+      "latitude": "45.61796511020862",
+      "longitude": "9.281410476488288",
       "length": "5.793",
       "turns": 11,
       "surface": "Asphalt",
