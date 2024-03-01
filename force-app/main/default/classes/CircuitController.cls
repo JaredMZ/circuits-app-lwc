@@ -16,7 +16,7 @@ public with sharing class CircuitController {
                                     FROM Circuit__c
                                     WITH SECURITY_ENFORCED
                                     ORDER BY Name
-                                    LIMIT 9];
+                                    LIMIT 6];
     
         List<Map<String, Object>> circuitsJsonList = new List<Map<String, Object>>();
 
@@ -67,9 +67,26 @@ public with sharing class CircuitController {
                                         WHERE Name LIKE :searchTerm
                                         WITH SECURITY_ENFORCED
                                         ORDER BY Name
-                                        LIMIT 50];
-        
-        return JSON.serialize(searchResults);
+                                        LIMIT 30];
+
+                                        
+    List<Map<String, Object>> searchResultsMapList = new List<Map<String, Object>>();
+    for (Circuit__c circuit : searchResults) {
+        Map<String, Object> circuitMap = new Map<String, Object>{
+            'Id' => circuit.Id,
+            'Name' => circuit.Name,
+            'Location__c' => circuit.Location__c,
+            'Length__c' => circuit.Length__c,
+            'Turns__c' => circuit.Turns__c,
+            'Surface__c' => circuit.Surface__c,
+            'Shape__c' => circuit.Shape__c,
+            'Start_Year__c' => circuit.Start_Year__c,
+            'Latitude__c' => circuit.Latitude__c,
+            'Longitude__c' => circuit.Longitude__c
+        };
+        searchResultsMapList.add(circuitMap);
     }
-    
+
+        return JSON.serialize(searchResultsMapList);   
+    } 
 }
