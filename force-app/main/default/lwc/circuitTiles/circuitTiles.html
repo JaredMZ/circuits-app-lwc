@@ -6,67 +6,57 @@
       <header class="slds-media slds-media_center slds-has-flexi-truncate">
         <div class="slds-media__body">
           <!-- Header title -->
-          <h2 class="slds-card__header-title">
+          <h2 class="slds-card__header-title slds-align_absolute-center">
             <a
               href="#"
-              class="slds-card__header-link slds-truncate"
+              class="slds-card__header-link slds-truncate slds-text-heading_medium"
               title="Circuits"
             >
-              <span>Circuits</span>
+              <span></span>
             </a>
           </h2>
         </div>
       </header>
     </div>
     <!-- Lightning layout for circuits -->
-    <lightning-layout
-      multiple-rows="true"
-      class="slds-card__body slds-card__body_inner slds-grid_align-center"
-    >
-      <template for:each={circuits} for:item="circuit">
-        <!-- Individual circuit layout item -->
-        <lightning-layout-item
-          key={circuit.id}
-          size="3"
-          class="slds-card_boundary slds-m-around_x-small"
-        >
-          <div class="slds-card__header slds-grid">
-            <header
-              class="slds-media slds-media_center slds-has-flexi-truncate"
-            >
-              <div class="slds-media__body">
-                <!-- Circuit name -->
-                <h2 class="slds-card__header-title">
-                  <a
-                    href="#"
-                    class="slds-card__header-link slds-truncate"
-                    title="Circuit Name"
-                  >
-                    <span>{circuit.Name}</span>
-                  </a>
-                </h2>
-              </div>
-            </header>
-          </div>
-          <!-- Circuit image -->
-          <div class="slds-card__body_inner slds-m-around_large img-container">
-            <img
-              src={circuit.ImgUrl}
-              alt="Circuit Shape"
-              class="circuit-shape"
-            />
-          </div>
-          <!-- Footer with button -->
-          <footer class="slds-card__footer">
-            <lightning-button
-              variant="Base"
-              label="View Details"
-              onclick={handleCircuitClick}
-              value={circuit.Id}
-            ></lightning-button>
-          </footer>
-        </lightning-layout-item>
+    <template if:true={circuits}>
+      <div class="slds-align_absolute-center">
+        <lightning-input
+          type="search"
+          onchange={handleSearchTermChange}
+          variant=""
+          class="slds-var-m-bottom_small slds-p-around_xx-small"
+          label="Search"
+          placeholder="E.g: Suzuka"
+          value={searchTerm}
+        ></lightning-input>
+      </div>
+
+      <lightning-layout
+        multiple-rows="true"
+        class="slds-card__body slds-card__body_inner slds-grid_align-center"
+      >
+        <template for:each={circuits} for:item="circuit">
+          <!-- Individual circuit layout item -->
+          <lightning-layout-item
+            key={circuit.id}
+            size="3"
+            class="slds-card_boundary slds-m-around_x-small"
+          >
+            <c-circuit-card circuit={circuit}></c-circuit-card>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+
+      <template if:false={hasResults}>
+        <div class="slds-align_absolute-center slds-var-m-vertical_small">
+          Box box! There is nothing to see here!
+        </div>
       </template>
-    </lightning-layout>
+    </template>
+
+    <template if:true={error}>
+      <div class="slds-text-color_error">An error occurred while loading!</div>
+    </template>
   </article>
 </template>

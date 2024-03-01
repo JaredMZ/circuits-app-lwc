@@ -18,15 +18,15 @@ export default class CircuitDetails extends LightningElement {
                 this.messageContext,
                 CIRCUIT_TILES_UPDATE_MESSAGE,
                 (message) => {
-                    this.handleCircuitTilesUpdate(message);
+                    this.handleCircuitDetailsUpdate(message);
                 }
             );
         }
     }
 
 
-    //GET ALL FIELD FROM MESSAGE CHANNEL
-    handleCircuitTilesUpdate(message) {
+    //GET ALL FIELDS FROM MESSAGE CHANNEL
+    handleCircuitDetailsUpdate(message) {
         if (message && message.record) {
             const selectedCircuit = message.record;
     

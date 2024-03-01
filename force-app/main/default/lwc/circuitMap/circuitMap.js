@@ -28,9 +28,9 @@ export default class CircuitMap extends LightningElement {
       const selectedCircuit = message.record;
 
       this.circuit = {
+        /*ID AND NAME ARE NOT NECESSARY 
         Id: selectedCircuit.circuitId,
-        Name: selectedCircuit.Name,
-        Location__c: selectedCircuit.Location,
+        Name: selectedCircuit.Name,*/
         Latitude__c: selectedCircuit.Latitude,
         Longitude__c: selectedCircuit.Longitude
       };
