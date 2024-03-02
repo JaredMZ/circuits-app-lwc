@@ -1,11 +1,16 @@
-# Racing Circuits App 🏁
+# Racing Circuits Components 🏁
 
-Welcome to the Racing Circuits App! This is a project I created to practice my skills and have a bit of fun.
+Welcome! This is a project I created to practice my skills and have a bit of fun.
+
+> [!NOTE]  
+> This repository does not include either custom objects nor records. However, you just need a custom object named Circuit(Circuit__c) and the next fields:
+>  
+![image](https://github.com/JaredMZ/circuits-app-lwc/assets/71626197/d457a37c-7b6d-458e-939c-2265c5560cfa)
 
 ## Components Included:
 
 1. **Circuit Card Component**: Display circuit shape and name, with a "view details" button.
-2. **Circuit Tiles Component**: Present racing circuits in a tile layout.
+2. **Circuit Tiles Component**: Present racing circuits in a tile layout with a search bar a the top.
 3. **Circuit Details Component**: Provide details and specifications for each racing circuit.
 4. **Circuit Map Component**: A map view to explore the geographical locations of racing circuits.
 
